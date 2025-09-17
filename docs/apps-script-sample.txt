@@ -1,13 +1,15 @@
-// Apps Script POST handler for Google Sheets + email notification
+// Google Apps Script (Code.gs) - paste in Apps Script editor and deploy as Web App (Anyone, even anonymous)
 function doPost(e) {
   try {
     const sheet = SpreadsheetApp.openById("PUT_YOUR_SHEET_ID_HERE").getSheetByName("Sheet1");
     const data = JSON.parse(e.postData.contents);
-    sheet.appendRow([new Date(), data.name, data.email, data.phone, data.date, data.time, data.desiredCode, data.location, data.contactMethod, data.budget]);
+    sheet.appendRow([new Date(), data.name, data.email, data.phone, data.date, data.time, data.code, data.location, data.contactMethod, data.budget]);
     const to = "your@yourdomain.com";
     const subject = "New Appointment Request - MOHKAMI";
-    const body = `New appointment:\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nDate: ${data.date}\nTime: ${data.time}\nCode: ${data.desiredCode}\nLocation: ${data.location}\nContact: ${data.contactMethod}\nBudget: ${data.budget}`;
+    const body = "New appointment:\n\n" + JSON.stringify(data, null, 2);
     MailApp.sendEmail(to, subject, body);
     return ContentService.createTextOutput(JSON.stringify({status:'ok'})).setMimeType(ContentService.MimeType.JSON);
-  } catch(err){ return ContentService.createTextOutput(JSON.stringify({status:'error', message: err.message})).setMimeType(ContentService.MimeType.JSON); }
+  } catch(err) {
+    return ContentService.createTextOutput(JSON.stringify({status:'error', message: err.message})).setMimeType(ContentService.MimeType.JSON);
+  }
 }
