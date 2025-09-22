@@ -10,11 +10,11 @@ body, html {
 /* فونت‌ها را بعد از قرار دادن فایل‌ها در پوشه اینجا تعریف کنید:
 @font-face {
   font-family: 'WarblerDeck';
-  src: url('warbler.woff2') format('woff2');
+  src: url('WarblerDeck.ttf') format('woff2');
 }
 @font-face {
   font-family: 'Europa';
-  src: url('europa.woff2') format('woff2');
+  src: url('Europa.ttf') format('woff2');
 }
 */
 
