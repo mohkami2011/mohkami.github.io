@@ -9,10 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   comingSoon.style.opacity = 1;
 
   setTimeout(() => {
-    // مرحله 2: تصویر پشت‌زمینه با fade in ظاهر شود
+    // مرحله 2: Coming Soon محو شود و تصویر پس‌زمینه ظاهر شود
+    comingSoon.style.opacity = 0;
     imageOverlay.style.opacity = 1;
 
-    // مرحله 3: نمایش شعارها زیر Coming Soon
+    // مرحله 3: نمایش شعارها
     setTimeout(() => {
       line1.classList.remove("hidden");
       line1.style.opacity = 1;
@@ -27,5 +28,5 @@ document.addEventListener("DOMContentLoaded", () => {
       line3.classList.remove("hidden");
       line3.style.opacity = 1;
     }, 4000);
-  }, 1000);
+  }, 2000);
 });

@@ -35,7 +35,7 @@ body, html {
   font-size: 8vw; /* خیلی بزرگ تا کل صفحه پر بشه */
   color: white;
   opacity: 0;
-  transition: opacity 2s;
+  transition: opacity 3s;
   z-index: 2;
   position: relative;
 }
@@ -48,7 +48,7 @@ body, html {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: opacity 2s;
+  transition: opacity 3s;
   z-index: 1;
 }
 
