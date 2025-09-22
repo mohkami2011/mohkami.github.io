@@ -1,0 +1,48 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Europa', sans-serif;
+  background: black;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Warbler Deck', serif;
+  font-size: 3rem;
+  color: white;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.background {
+  background: url('background.jpg') no-repeat center center/cover;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.text-container .line {
+  margin: 10px 0;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.hidden {
+  display: none;
+}
