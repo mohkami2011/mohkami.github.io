@@ -1,32 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const comingSoon = document.getElementById("comingSoon");
-  const imageOverlay = document.getElementById("imageOverlay");
-  const line1 = document.getElementById("line1");
-  const line2 = document.getElementById("line2");
-  const line3 = document.getElementById("line3");
+  const overlay = document.getElementById("overlay");
+  const slides = document.querySelectorAll(".slide");
+  const lines = document.querySelectorAll(".line");
+  
+  let currentSlide = 0;
 
-  // مرحله 1: نمایش Coming Soon
-  comingSoon.style.opacity = 1;
-
+  // Start slideshow after Coming Soon fades out
   setTimeout(() => {
-    // مرحله 2: Coming Soon محو شود و تصویر پس‌زمینه ظاهر شود
-    comingSoon.style.opacity = 0;
-    imageOverlay.style.opacity = 1;
+    overlay.style.display = "none";
+    slides[0].classList.add("active");
 
-    // مرحله 3: نمایش شعارها
-    setTimeout(() => {
-      line1.classList.remove("hidden");
-      line1.style.opacity = 1;
-    }, 1000);
+    // Loop slideshow
+    setInterval(() => {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }, 4000); // change every 4s
 
-    setTimeout(() => {
-      line2.classList.remove("hidden");
-      line2.style.opacity = 1;
-    }, 2500);
+    // Show taglines one by one
+    lines.forEach((line, index) => {
+      setTimeout(() => {
+        line.classList.add("show");
+      }, 1000 + index * 2500);
+    });
 
-    setTimeout(() => {
-      line3.classList.remove("hidden");
-      line3.style.opacity = 1;
-    }, 4000);
-  }, 2000);
+  }, 6000); // after Coming Soon animation
 });
