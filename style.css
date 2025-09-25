@@ -1,70 +1,83 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
-  background: black;
+  height: 100%;
   overflow: hidden;
-}
-
-/* فونت‌ها را بعد از قرار دادن فایل‌ها در پوشه اینجا تعریف کنید:
-@font-face {
-  font-family: 'WarblerDeck';
-  src: url('WarblerDeck.ttf') format('woff2');
-}
-@font-face {
-  font-family: 'Europa';
-  src: url('Europa.ttf') format('woff2');
-}
-*/
-
-.background {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background: black;
+  font-family: sans-serif;
+  color: white;
   text-align: center;
-  color: white;
 }
 
-.overlay {
-  font-family: 'WarblerDeck', serif;
-  font-size: 8vw; /* خیلی بزرگ تا کل صفحه پر بشه */
-  color: white;
-  opacity: 0;
-  transition: opacity 3s;
-  z-index: 2;
-  position: relative;
-}
-
-.image-overlay {
-  background: url('background.jpg') no-repeat center center/cover;
+#overlay {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  z-index: 10;
+}
+
+.coming-soon {
+  font-size: 5em;
   opacity: 0;
-  transition: opacity 3s;
-  z-index: 1;
+  animation: fadeIn 2s ease-in forwards, fadeOut 2s ease-in 3s forwards;
 }
 
-.text-container {
-  margin-top: 30px;
-  font-family: 'Europa', sans-serif;
-  z-index: 2;
-  position: relative;
+#slideshow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
-.text-container .line {
-  margin: 15px 0;
+.slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
   opacity: 0;
-  transition: opacity 2s;
+  transition: opacity 2s ease-in-out;
 }
 
-.hidden {
-  display: none;
+.slide.active {
+  opacity: 1;
+}
+
+#taglines {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+}
+
+.line {
+  font-size: 1.5em;
+  margin: 10px 0;
+  opacity: 0;
+  transition: opacity 2s ease-in;
+}
+
+.line.show {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
